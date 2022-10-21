@@ -51,10 +51,8 @@ env/
 # webpack-built files
 /evolux_solution/static/build/
 
-# Configuration
-.env
-
 # Development database
 *.db
+!.env.prod.db
 
 __pycache__
