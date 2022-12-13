@@ -1,7 +1,14 @@
+from environs import Env
+
+env = Env()
+env.read_env()
+
 """Settings module for test app."""
+SQLALCHEMY_DATABASE_URI = env.str(
+    "DATABASE_URL", "postgresql://postgres:postgres@db-test:5432/postgres_test"
+)
 FLASK_DEBUG = True
 TESTING = True
-SQLALCHEMY_DATABASE_URI = "postgresql://postgres:postgres@db-test:5432/postgres_test"
 SECRET_KEY = "not-so-secret-in-tests"
 BCRYPT_LOG_ROUNDS = (
     4  # For faster tests; needs at least 4 to avoid "ValueError: Invalid rounds"
