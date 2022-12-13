@@ -40,5 +40,6 @@ jobs:
     - name: Run Tests
       env:
         SECRET_KEY: ${{ env.FLASK_SECRET_KEY }}
+        DATABASE_URL: ${{ env.DATABASE_URL }}
       run: |
         flask test
