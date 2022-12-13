@@ -15,7 +15,7 @@ env.read_env()
 
 ROWS_PER_PAGE = env.int("ROWS_PER_PAGE", default=10)
 FLASK_DEBUG = env.str("FLASK_DEBUG", default=False)
-SQLALCHEMY_DATABASE_URI = env.str("DATABASE_URL")
+SQLALCHEMY_DATABASE_URI = env.str("DATABASE_URL", default="sqlite:////tmp/test.db")
 SECRET_KEY = env.str("SECRET_KEY")
 BCRYPT_LOG_ROUNDS = env.int("BCRYPT_LOG_ROUNDS", default=13)
 SQLALCHEMY_TRACK_MODIFICATIONS = False

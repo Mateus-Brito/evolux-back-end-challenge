@@ -23,6 +23,20 @@ jobs:
       max-parallel: 4
       matrix:
         python-version: [3.10.5]
+    services:
+      db-test:
+        image: postgres:13.0-alpine
+        env:
+          POSTGRES_DB: postgres_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
     steps:
     - name: Cancel Previous Runs
       uses: styfle/cancel-workflow-action@0.9.1
@@ -40,6 +54,5 @@ jobs:
     - name: Run Tests
       env:
         SECRET_KEY: ${{ env.FLASK_SECRET_KEY }}
-        DATABASE_URL: ${{ env.DATABASE_URL }}
       run: |
         flask test
