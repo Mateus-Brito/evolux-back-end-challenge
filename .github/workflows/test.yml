@@ -54,5 +54,6 @@ jobs:
     - name: Run Tests
       env:
         SECRET_KEY: ${{ env.FLASK_SECRET_KEY }}
+        TEST_DATABASE_URL: postgresql://postgres:postgres@db-test:5432/postgres_test
       run: |
         flask test
